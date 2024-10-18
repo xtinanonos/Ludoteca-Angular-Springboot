@@ -1,0 +1,50 @@
+.container {
+    min-width: 350px;
+    max-width: 500px;
+    padding: 50px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+
+        .date-fields-name {
+            margin-left: 20px;
+            color: darkgrey;
+        }
+
+        // Aplicar un margen derecho más estrecho a todos los campos excepto botones
+        mat-form-field {
+            margin-right: 60px; // Ajustar el margen derecho a 5px
+        }
+
+        .date-fields {
+            .date-mat-form-fields {
+                display: flex;
+                justify-content: space-between;
+                /* Espacio entre los campos */
+            }
+
+            mat-form-field {
+                flex: 1;
+                /* Hacer que cada campo ocupe el mismo espacio */
+                margin-right: 60px;
+                /* Espacio entre los campos */
+
+                // .date-error {
+                //     display: block;
+                // }
+            }
+        }
+    }
+
+    .buttons {
+        text-align: right;
+
+        button {
+            margin-left: 10px;
+            padding: 10px 20px; // Aumentar el padding para hacerlos más grandes
+            min-width: 100px; // Establecer un ancho mínimo
+        }
+    }
+}

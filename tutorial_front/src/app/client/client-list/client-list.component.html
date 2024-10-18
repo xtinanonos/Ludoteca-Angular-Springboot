@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Listado de Clientes</h1>
+
+    <mat-table [dataSource]="dataSource"> <!--Creamos la tabla con la variable dataSource-->
+        <ng-container matColumnDef="id">    <!--Definición de la primera columna y el dato que va a contener-->
+            <mat-header-cell *matHeaderCellDef> Identificador </mat-header-cell>    <!-- cabecera de la columna-->
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name"> <!--Definición de la segunda columna y el dato que va a contener-->
+            <mat-header-cell *matHeaderCellDef> Nombre cliente </mat-header-cell>   <!--cabecera de la columna-->
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action"> <!--Definición de la tercera columna -->
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>   <!-- cabecera vacia -->
+            <mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)="editClient(element)">
+                        <mat-icon>edit</mat-icon> </button>
+                <button mat-icon-button color="accent" (click)="deleteClient(element)">
+                            <mat-icon>clear</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+<!--Construcción de las filas: la cabecera y el resto de filas -->
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+<!--boton inferior de nuevo cliente -->
+    <div class="buttons">
+        <button mat-flat-button color="primary" (click)="createClient()">Nuevo cliente </button>     
+    </div>   
+</div>

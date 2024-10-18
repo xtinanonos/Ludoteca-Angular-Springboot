@@ -1,0 +1,25 @@
+.container {
+    min-width: 350px;
+    max-width: 500px;
+    padding: 20px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom:20px;
+
+    }
+
+    .buttons {
+      text-align: right;
+
+      button {
+          margin-left: 10px;
+      }
+    }
+    
+    .error {
+        margin-left: 15px; /* Aseguramos que el mat-error también tenga el mismo margen */
+    
+      }
+}

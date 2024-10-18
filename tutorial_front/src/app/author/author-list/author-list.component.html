@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Listado de Autores</h1>
+
+    <mat-table [dataSource]="dataSource"> 
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Identificador </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+             <!-- element es cada uno de los elementos q se han volcado en el dataSource -->
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Nombre autor  </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nationality">
+            <mat-header-cell *matHeaderCellDef> Nacionalidad  </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nationality}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)="editAuthor(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="deleteAuthor(element)">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <!--Renderiza la fila de encabezado de la tabla, que muestra los nombres de las columnas definidas en displayedColumns-->
+       <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        
+        <!--Renderiza las filas de la tabla, mostrando los datos de cada elemento en las columnas definidas 
+        por displayedColumns. Cada fila mapea las propiedades de los objetos de datos a las columnas correspondientes.-->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table> 
+
+    <!--Componente de paginación. Tiene definido un método page que se ejecuta cada vez que la página cambia, 
+    y unas propiedades con las que calculará la página, el tamaño y el número total de páginas.-->
+    <mat-paginator (page)="loadPage($event)" [pageSizeOptions]="[5, 10, 20]" [pageIndex]="pageNumber" [pageSize]="pageSize" [length]="totalElements" showFirstLastButtons></mat-paginator>
+
+    <div class="buttons">
+        <button mat-flat-button color="primary" (click)="createAuthor()">Nuevo autor</button> 
+    </div>   
+</div>
